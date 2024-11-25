@@ -142,6 +142,38 @@ export function setColor(
   }
 }
 
+export function setToneChroma(
+  palette: Palette,
+  chroma: number,
+  tone: number
+): Palette {
+  const { lch2color } = colorSpaces[palette.mode]
+  return {
+    ...palette,
+    colors: palette.colors.map(colors =>
+      colors.map((color, toneId) =>
+        toneId === tone ? lch2color([color.l, chroma, color.h]) : color
+      )
+    ),
+  }
+}
+
+export function roundPaletteValues(palette: Palette): Palette {
+  const { lch2color } = colorSpaces[palette.mode]
+  return {
+    ...palette,
+    colors: palette.colors.map(tones =>
+      tones.map(color => {
+        // Round L, C, and H values
+        const roundedL = Math.round(color.l)
+        const roundedC = Math.round(color.c * 1000) / 1000
+        const roundedH = Math.round(color.h)
+        return lch2color([roundedL, roundedC, roundedH])
+      })
+    ),
+  }
+}
+
 export function setToneLuminance(
   palette: Palette,
   luminance: number,

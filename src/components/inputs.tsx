@@ -35,7 +35,7 @@ export const Button = styled.button`
   }
 `
 
-export const Select = styled(Button.withComponent('select'))`
+export const Select = styled(Button).attrs({ as: 'select' })`
   :active {
     /* Transform closes select on Firefox (or not) */
     transform: none;
@@ -76,7 +76,7 @@ export const Input = styled.input`
   }
 `
 
-export const TextArea = Input.withComponent('textarea')
+export const TextArea = styled(Input).attrs({ as: 'textarea' })``
 
 export const ControlGroup = styled.div`
   display: flex;

@@ -1,11 +1,9 @@
 import { useStore } from '@nanostores/react'
-import React from 'react'
 import styled from 'styled-components'
 import { getPaletteLink, setColor, setPalette } from 'store/palette'
 import { Button, ControlGroup } from '../inputs'
 import { ThemeButton } from './ThemeButton'
 import { PaletteSelect } from './PaletteSelect'
-import { CopyButton } from '../CopyButton'
 import { Link } from 'shared/icons/Link'
 import { GitHub } from 'shared/icons/GitHub'
 import { paletteStore } from 'store/palette'
@@ -38,10 +36,6 @@ export function Header() {
     <Wrapper>
       <ControlRow>
         <PaletteSelect />
-        <CopyButton getContent={() => getPaletteLink(palette)}>
-          <Link />
-          Copy link
-        </CopyButton>
       </ControlRow>
 
       <ControlRow>
@@ -84,9 +78,6 @@ export function Header() {
         <ChartSettings />
 
         <ThemeButton />
-        <Button as="a" href="https://github.com/ardov/huetone">
-          <GitHub />
-        </Button>
       </ControlRow>
     </Wrapper>
   )

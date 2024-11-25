@@ -9,6 +9,4 @@ declare module 'apca-w3' {
   export function sRGBtoY(rgb: RGB): number
   export function displayP3toY(rgb: RGB): number
   export function adobeRGBtoY(rgb: RGB): number
-  // export function alphaBlend()
-  // export function calcAPCA()
 }

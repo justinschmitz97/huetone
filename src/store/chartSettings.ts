@@ -1,4 +1,3 @@
-import { action } from 'nanostores'
 import { persistentMap } from '@nanostores/persistent'
 
 export type TSettings = {
@@ -17,18 +16,10 @@ export const chartSettingsStore = persistentMap<TSettings>(
   { encode: JSON.stringify, decode: JSON.parse }
 )
 
-export const toggleShowColors = action(
-  chartSettingsStore,
-  'toggleShowColors',
-  store => store.setKey('showColors', !store.get().showColors)
-)
+const toggleSetting = (key: keyof TSettings) => {
+  chartSettingsStore.setKey(key, !chartSettingsStore.get()[key])
+}
 
-export const toggleShowP3 = action(chartSettingsStore, 'toggleShowP3', store =>
-  store.setKey('showP3', !store.get().showP3)
-)
-
-export const toggleShowRec2020 = action(
-  chartSettingsStore,
-  'toggleShowRec2020',
-  store => store.setKey('showRec2020', !store.get().showRec2020)
-)
+export const toggleShowColors = () => toggleSetting('showColors')
+export const toggleShowP3 = () => toggleSetting('showP3')
+export const toggleShowRec2020 = () => toggleSetting('showRec2020')

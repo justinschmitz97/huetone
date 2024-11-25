@@ -5,9 +5,11 @@ import { Minimize } from 'shared/icons/Minimize'
 import * as Menu from '../DropdownMenu'
 import { Button } from '../inputs'
 import {
+  currentChromaToColumn,
   currentHueToRow,
   currentLuminanceToColumn,
   pushColorsIntoRgb,
+  roundPaletteColors,
 } from 'store/palette'
 
 export const ColorActions = () => {
@@ -30,6 +32,9 @@ export const ColorActions = () => {
               Make colors displayable
             </span>
           </Menu.Item>
+          <Menu.Item onClick={roundPaletteColors}>
+            <span style={{ display: 'flex', gap: 8 }}>Round color values</span>
+          </Menu.Item>
           <Menu.Item onSelect={currentHueToRow}>
             <span style={{ display: 'flex', gap: 8 }}>
               <EqualizeH />
@@ -40,6 +45,12 @@ export const ColorActions = () => {
             <span style={{ display: 'flex', gap: 8 }}>
               <EqualizeL />
               Apply current luminance to column
+            </span>
+          </Menu.Item>
+          <Menu.Item onClick={currentChromaToColumn}>
+            <span style={{ display: 'flex', gap: 8 }}>
+              <EqualizeL />
+              Apply current chroma to column
             </span>
           </Menu.Item>
         </Menu.Content>

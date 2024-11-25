@@ -1,12 +1,11 @@
 import { useStore } from '@nanostores/react'
-import React, { FC, useMemo } from 'react'
+import { FC, useMemo } from 'react'
 import styled from 'styled-components'
 import { Scale } from './ColorGraph'
 import { PaletteSwatches } from './PaletteSwatches'
 import { setLchColor } from 'store/palette'
 import { ExportField } from './Export'
 import { ColorInfo } from './ColorInfo'
-import { Help } from './Help'
 import { KeyPressHandler } from './KeyPressHandler'
 import { useKeyPress } from 'shared/hooks/useKeyPress'
 import { paletteStore } from 'store/palette'
@@ -111,7 +110,6 @@ export default function App() {
               }}
             />
           </Charts>
-          <Help />
         </ChartsSection>
       </Wrapper>
     </div>
